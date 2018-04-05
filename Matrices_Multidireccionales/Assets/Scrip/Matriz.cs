@@ -8,8 +8,11 @@ public class Matriz : MonoBehaviour {
     GameObject[,] grid;
     bool player;
     int x, y;
+    Color colorbase;
+    Logica logica;
 	// Use this for initialization
 	void Start () {
+        logica = new Logica();
         x = size;
         y = size;
         grid = new GameObject[x, y];
@@ -44,18 +47,21 @@ public class Matriz : MonoBehaviour {
             GameObject go = grid[_x, _y];
             print(go.GetComponent<Renderer>().material.color);
             //if (go.GetComponent <Renderer >().material .)
-            if (player)
+            if (go.GetComponent<Renderer>().material .color == Color.white)
             {
-                print(player);
-                go.GetComponent<Renderer>().material.SetColor("_Color", Color.red);
-                player = false;
+                if (player)
+                {
+                    print(player);
+                    go.GetComponent<Renderer>().material.SetColor("_Color", Color.red);
+                    player = false;
+                }
+                else
+                {
+                    go.GetComponent<Renderer>().material.SetColor("_Color", Color.blue);
+                    player = true; 
+                }
             }
-            else
-            {
-                go.GetComponent<Renderer>().material.SetColor("_Color", Color.blue);
-                player = true;
-                print(player);
-            }
+            
          
         }
        
