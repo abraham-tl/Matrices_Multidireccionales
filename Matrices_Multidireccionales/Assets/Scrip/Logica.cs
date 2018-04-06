@@ -49,7 +49,7 @@ public class Logica : MonoBehaviour {
     {
         for (int i = inicio; i <= final; i++)
         {
-            //if (grid__[position ,i].GetComponent <Renderer >().material .color)
+            //if (grid__[position, i].GetComponent<Renderer>().material.color)
         }
     }
 
