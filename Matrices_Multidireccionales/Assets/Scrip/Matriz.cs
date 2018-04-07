@@ -69,6 +69,7 @@ public class Matriz : MonoBehaviour {
         int position;
         int v_inicio;
         int v_final;
+      
         position = y;
         if ((_x - 3) >= 0)
         {
@@ -103,58 +104,86 @@ public class Matriz : MonoBehaviour {
             v_final = 9;
         }
         position = inicio;
-        //print(inicio + "--" + final);
-        //for (int i = inicio; i <= final; i++)
-        //{
-        //    if (grid[i, _y].GetComponent<Renderer>().material.color == color)
-        //    {
-        //        cont = cont + 1;
-        //    }
-        //    else
-        //    {
-        //        cont = 0;
-        //    }
-        //    if (cont >= 4)
-        //    {
-        //        print("GANO");
-        //        limpiar();
-        //        break;
-        //    }
-        //}
-        //for (int i = v_inicio; i <= v_final; i++)
-        //{
-        //    if (grid[_x, i].GetComponent<Renderer>().material.color == color)
-        //    {
-        //        cont = cont + 1;
-        //    }
-        //    else
-        //    {
-        //        cont = 0;
-        //    }
-        //    if (cont >= 4)
-        //    {
-        //        print("GANO");
-        //        limpiar();
-        //        break;
-        //    }
-        //}
-        for (int i = inicio;i<=v_final;i++)
+      
+        for (int i = inicio; i <= final; i++)
         {
-            if (grid[_x, i].GetComponent<Renderer>().material.color == color)
+            if (grid[i, _y].GetComponent<Renderer>().material.color == color)
             {
                 cont = cont + 1;
-                print(cont);
             }
             else
             {
                 cont = 0;
-
             }
+            if (cont >= 4)
+            {
+                limpiar();
+                break;
+            }
+        }
+        for (int i = v_inicio; i <= v_final; i++)
+        {
+            if (grid[_x, i].GetComponent<Renderer>().material.color == color)
+            {
+                cont = cont + 1;
+            }
+            else
+            {
+                cont = 0;
+            }
+            if (cont >= 4)
+            {            
+                limpiar();
+                break;
+            }
+        }
+
+        int l = _x;
+        int j = _y;
+        cont = 0;
+       while (j >=0 && l >= 0 )
+        {
+            if (grid[l, j].GetComponent<Renderer>().material.color == color)
+            {
+                cont = cont + 1;
+                l = l - 1;
+                j = j - 1;
+            }
+            else
+            {
+                j = -1;
+                l = -1;
+            }       
+        }
+        l = _x + 1;
+        j = _y + 1;
+        while (j <= 9 && l <= 9)
+        {
+            if (grid[l, j].GetComponent<Renderer>().material.color == color)
+            {
+                cont = cont + 1;
+                l = l + 1;
+                j = j + 1;
+            }
+            else
+            {
+                j = 10;
+                l = 10;
+            }
+        }
+        if (cont >=4)
+        {
+            limpiar();
+        }
+        else
+        {
+            cont = 0;
         }
 
     }
     void limpiar()
     {
+        print("GANO");
         for (int i =0;i<size;i++)
         {
             for (int j =0;j<size;j++)
