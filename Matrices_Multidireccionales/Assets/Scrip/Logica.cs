@@ -121,10 +121,8 @@ public class Logica  {
             if (grid[l, j].GetComponent<Renderer>().material.color == color)
             {
                 cont = cont + 1;
-               
                 l = l - 1;
-                j = j - 1;
-  
+                j = j - 1; 
             }
             else
             {
