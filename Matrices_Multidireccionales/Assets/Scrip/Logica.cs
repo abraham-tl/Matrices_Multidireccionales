@@ -23,11 +23,12 @@ public class Logica  {
         int position;
         int v_inicio;
         int v_final;
-        int der;
-        int izq;
-        int abajo;
-        int encima;
+        int der =0;
+        int izq=0;
+        int abajo=0;
+        int encima=0;
             position = y;
+        //Esta cadena de condicionales if reducen la matriz original para vertical y horizontal
         if ((_x - 3) >= 0)
         {
             inicio = (_x - 3);
@@ -69,7 +70,7 @@ public class Logica  {
             encima = 9;
         }
         position = inicio;
-
+        //Ciclo para verificar si hay 4 en linea Horizontal
         for (int i = inicio; i <= final; i++)
         {
             if (grid[i, _y].GetComponent<Renderer>().material.color == color)
@@ -83,9 +84,9 @@ public class Logica  {
             if (cont >= 4)
             {
                 return true;
-             
             }
         }
+        //Ciclo para verificar si hay 4 en linea Vertical
         for (int i = v_inicio; i <= v_final; i++)
         {
             if (grid[_x, i].GetComponent<Renderer>().material.color == color)
@@ -102,20 +103,10 @@ public class Logica  {
             }
         }
 
-        for (int i = (inicio +1);i <= final; i ++)
-        {
-            for (int k =(v_inicio +1);k <= final ; k ++)
-            {
-                if (grid[_x, i].GetComponent<Renderer>().material.color == color)
-                {
-                   
-                }
-            }
-        }
-
         int l = _x;
         int j = _y;
         cont = 0;
+        //Ciclo para verificar si hay 4 en linea diagonal inferior  izquierda
         while (l >= 0 && j >= 0)
         {
             if (grid[l, j].GetComponent<Renderer>().material.color == color)
@@ -132,6 +123,7 @@ public class Logica  {
         }
         l = _x + 1;
         j = _y + 1;
+        //Ciclo para verificar si hay 4 en linea diagonal Superior Derecha
         while (j <= 9 && l <= 9)
         {
             if (grid[l, j].GetComponent<Renderer>().material.color == color)
@@ -156,9 +148,9 @@ public class Logica  {
         }
         l = _x;
         j = _y;
+        //Ciclo para verificar si hay 4 en linea diagonal Superior  izquierda
         while (l >= 0 && j <= 9)
         {
-
             if (grid[l, j].GetComponent<Renderer>().material.color == color)
             {
                 cont = cont + 1;
@@ -174,6 +166,7 @@ public class Logica  {
 
         l = _x + 1;
         j = _y - 1;
+        //Ciclo para verificar si hay 4 en linea diagonal inferior  derecha
         while (l <= 9 && j >= 0)
         {
             if (grid[l, j].GetComponent<Renderer>().material.color == color)

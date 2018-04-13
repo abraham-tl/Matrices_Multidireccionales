@@ -186,6 +186,7 @@ public class Matriz : MonoBehaviour {
 
         }
     }
+    //Metodo que envia texto y color al Canvas del player que sigue en el turno  
     void Turno_void(Color coler)
     {
         if (coler == Color .blue)
@@ -202,7 +203,7 @@ public class Matriz : MonoBehaviour {
        StartCoroutine (Timer());
 
     }
-
+    //Canvas del player que sigue en el turno se quita en 2 segundos
     IEnumerator Timer()
     {
         yield return new WaitForSeconds(2f);
